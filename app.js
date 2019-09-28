@@ -18,9 +18,9 @@ const storage = multer.diskStorage({
 	  	let date = Date.now();
 	  	let tmpFile = date + '.' + flag;
 	  	req.body.filePath = `/uploads/${tmpFile}`;
-	  	req.body.fileName = tmpFile;
-	    // cb(null, file.originalname);
-	    cb(null, tmpFile);
+	  	req.body.fileName = file.originalname;
+	    cb(null, file.originalname);
+	    // cb(null, tmpFile);
   	} catch(e) {
   		console.log('Error While file upload');
   	}

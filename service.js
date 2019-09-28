@@ -17,7 +17,6 @@ const transport = nodemailer.createTransport({
 const sendMail = (name) => {
 	try {
 		let attachments = [{ filename: name, path: path.join(process.cwd(), 'uploads', name)}];
-		debugger;
 		let mailOption = {
 		    from: 'noreplay@test.com',
 		    to : 'dhaval5522@gmail.com',
