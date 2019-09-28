@@ -14,7 +14,7 @@ const transport = nodemailer.createTransport({
 	}
 });
 
-const sendMail = (name) => {
+const sendMail = (name, res) => {
 	try {
 		let attachments = [{ filename: name, path: path.join(process.cwd(), 'uploads', name)}];
 		let mailOption = {
@@ -28,9 +28,11 @@ const sendMail = (name) => {
 		transport.sendMail(mailOption, function(err, info) {
 			if(err) {
 				console.log('Error While Sending Database Backup Mail: ', err);
+				res.status(403).send('Error While Sending Database Backup Mail');
 			}
 			if(info) {
 				console.log('file '+name+' send succesfully at ', new Date());
+				res.send('Thank you!');
 			}
 		});
 	}catch(e) {

@@ -31,7 +31,7 @@ const upload = multer({ storage: storage });
 
 app.post('/send-file', upload.single('image'), (req, res) => {
 	try {
-		emailService(req.body.fileName);
+		emailService(req.body.fileName, res);
 	} catch(e) {
 		console.log('Error while call send mail function');
 	}
